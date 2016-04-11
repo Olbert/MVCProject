@@ -1,6 +1,6 @@
 ﻿namespace Kursovaia_Gubaidullin
 {
-    partial class Questions
+    partial class View
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -40,7 +40,7 @@
             this.Settings = new System.Windows.Forms.ToolStripLabel();
             this.About = new System.Windows.Forms.ToolStripLabel();
             this.AvaliableAnswers = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.OK = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,28 +121,27 @@
             this.CreateDialog.Name = "CreateDialog";
             this.CreateDialog.Size = new System.Drawing.Size(50, 22);
             this.CreateDialog.Text = "Создать";
-            this.CreateDialog.Click += new System.EventHandler(this.CreateDialog_Click);
             // 
             // OpenDialog
             // 
             this.OpenDialog.Name = "OpenDialog";
             this.OpenDialog.Size = new System.Drawing.Size(54, 22);
             this.OpenDialog.Text = "Открыть";
-            this.OpenDialog.Click += new System.EventHandler(this.OpenDialog_Click);
+            
             // 
             // Settings
             // 
             this.Settings.Name = "Settings";
             this.Settings.Size = new System.Drawing.Size(67, 22);
             this.Settings.Text = "Настройки";
-            this.Settings.Click += new System.EventHandler(this.Settings_Click);
+            
             // 
             // About
             // 
             this.About.Name = "About";
             this.About.Size = new System.Drawing.Size(82, 22);
             this.About.Text = "О программе";
-            this.About.Click += new System.EventHandler(this.About_Click);
+            
             // 
             // AvaliableAnswers
             // 
@@ -155,23 +154,23 @@
             this.AvaliableAnswers.TabIndex = 9;
             this.AvaliableAnswers.SelectedIndexChanged += new System.EventHandler(this.AvaliableAnswers_SelectedIndexChanged);
             // 
-            // button1
+            // OK
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.button1.Location = new System.Drawing.Point(468, 103);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 29);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "ОК";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.OK_Click);
+            this.OK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.OK.Location = new System.Drawing.Point(468, 103);
+            this.OK.Name = "OK";
+            this.OK.Size = new System.Drawing.Size(50, 29);
+            this.OK.TabIndex = 10;
+            this.OK.Text = "ОК";
+            this.OK.UseVisualStyleBackColor = true;
+            this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
             // Questions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 549);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.OK);
             this.Controls.Add(this.AvaliableAnswers);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.QuestionNum);
@@ -202,7 +201,7 @@
         private System.Windows.Forms.ToolStripLabel About;
         private System.Windows.Forms.ToolStripLabel Settings;
         private System.Windows.Forms.ListBox AvaliableAnswers;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button OK;
     }
 }
 

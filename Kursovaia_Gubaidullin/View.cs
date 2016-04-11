@@ -12,55 +12,51 @@ using System.Threading;
 namespace Kursovaia_Gubaidullin
 {
 
-    public partial class Questions : Form
+    // А МОЖЕТ ОТДЕЛЬНЫМ ПРОЕКТОМ?
+
+
+    public partial class View : Form
     {
-        public Questions()
+        public View()
         {
             InitializeComponent();
-            try
-            {
-                System.IO.StreamReader file = new System.IO.StreamReader("Kursovaia.Info");
-                CCompilerPath = file.ReadLine();
-                SCompilerPath = file.ReadLine();
-                //PCompilerPath = file.ReadLine();
-                GameTheory = Convert.ToBoolean(file.ReadLine());
-                file.Close();
-            }
-            catch (Exception ex) { }
         }
+        public static EventWaitHandle END = new AutoResetEvent(false);
 
-        public void Prepare()
+        public void Prepare(EventHandler CreateDialog_Click, EventHandler OpenDialog_Click, EventHandler Settings_Click, EventHandler About_Click)
         {
-
+            this.CreateDialog.Click += CreateDialog_Click;
+            this.OpenDialog.Click += OpenDialog_Click;
+            this.Settings.Click += Settings_Click;
+            this.About.Click += About_Click;
         }
-        public int SetQuestion(Question CurQuestion) //стартовать асинхронно, чтобы возвращать ответ?
+
+        public int SetQuestion(string CurQuestion, string[] Answers) //стартовать асинхронно, чтобы возвращать ответ?
         {
             int n = Convert.ToInt32(QuestionNum.Text);
             n++;
             QuestionNum.Text = Convert.ToString(n);
-            Question.Text = CurQuestion.Text;
-            Protokol.Text += "ДС: " + Question.Text + '\n' + "Пользователь: " + Answer.Text + '\n';
-            while (!OK_Click)
-            {
+            Question.Text = CurQuestion;
 
-            }
+            END.WaitOne();
+
             Protokol.Text += "ДС: " + Question.Text + '\n' + "Пользователь: " + Answer.Text + '\n';
+            
             Answer.Clear();
             AvaliableAnswers.Items.Clear();
             return AvaliableAnswers.SelectedIndex;
-
         }
+
         private void AvaliableAnswers_SelectedIndexChanged(object sender, EventArgs e)
         {
             Answer.Text = AvaliableAnswers.SelectedItem.ToString();
-
         }
        
         private void OK_Click(object sender, EventArgs e)
         {
-
-
+            END.Set();
         }
+        
     }
 
 }

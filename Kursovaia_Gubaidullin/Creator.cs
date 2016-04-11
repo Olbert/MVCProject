@@ -17,16 +17,14 @@ namespace Kursovaia_Gubaidullin
         public int i = 0, k = 0;
         public bool NEW = true;
         public bool CanSimpleViewed = true;
-        Form ParentForm;
         int PartsNUM = 0;
         int QuestionNUM = 0;
         int CurrentLine = 2;
         
 
-        public Creator(Form f)
+        public Creator()
         {
             InitializeComponent();
-            ParentForm = f;
             SourceBox.Text += '\n' + '\n';
 
         }
@@ -166,7 +164,6 @@ namespace Kursovaia_Gubaidullin
                         myStream.Close();
                     }
                 }
-                ParentForm.Show();
                 this.Close();
             }
         }

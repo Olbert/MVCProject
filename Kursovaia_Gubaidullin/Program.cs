@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Kursovaia_Gubaidullin
 {
+
+
+    // весь код  был использован в курсовой
+    // сохранен на случай требования внятного диалога с действиями
+/*
     public class Program
     {
 
@@ -145,5 +150,26 @@ namespace Kursovaia_Gubaidullin
             }
 
         }
+        //собирает воедино код
+        public void IN(int i, int k, int z, int j, StreamReader input)
+        {
+            S[i].M[k].R[z].Source[j].Length = new int[4];  //Console1,Console2, File1,File2
+            S[i].M[k].R[z].Source[j].Text = new string[4];
+            for (int t = 0; t < 4; t++)
+            {
+                S[i].M[k].R[z].Source[j].Length[t] = Convert.ToInt32(input.ReadLine());
+                for (int s = 0; s < S[i].M[k].R[z].Source[j].Length[t]; s++)
+                    S[i].M[k].R[z].Source[j].Text[t] += input.ReadLine() + '\n';
+            }
+        }
+        public class Command
+        {
+            public bool Exist;
+            public String Language;
+            public String Type;
+            public int[] Length = new int[2];
+            public String[] Text = new String[2];
+        }
     }
+    */
 }

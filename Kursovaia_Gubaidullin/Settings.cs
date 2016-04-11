@@ -12,14 +12,14 @@ namespace Kursovaia_Gubaidullin
 {
     public partial class Settings : Form
     {
-        Questions ParentForm = null;
         public string CompilerPath = null;
-        public Settings(Questions f)
+        public Settings()
         {
+            // весь код (как и в Settings.Designer) был использован в куссовой
+            // сохранен на случай требования внятного диалога с действиями
             InitializeComponent();
-            ParentForm = f;
         }
-
+        /*
         private void BrowseSharp_Click(object sender, EventArgs e)
         {
             try
@@ -56,27 +56,7 @@ namespace Kursovaia_Gubaidullin
                 MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
             }
         }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void Back_Click(object sender, EventArgs e)
-        {
-            string game = "0";
-            if (GameTheory.Checked)
-                game = "1";
-
-            if (SCompiler.Text.Length != 0)
-            {
-                string[] lines = { CCompiler.Text, SCompiler.Text, game };
-                System.IO.File.WriteAllLines("Kursovaia.Info", lines);
-            }
-            ParentForm.Show();
-            this.Close();
-        }
-
+        */
 
     }
 }

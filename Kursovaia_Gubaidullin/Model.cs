@@ -14,74 +14,66 @@ namespace Kursovaia_Gubaidullin
 {
     public class Model
     {
-        public int PartsNUM = 0;
-        public Element[] S;// S = (s1,s2,…,sn) si – элемент сценария.
-        public class Element // s = (M, P, N, T, R, S’)
+        public class Message
         {
 
-            public int QuestionsNUM = 0;
-            public Message[] M; //M = (Mk, V, D) – описание сообщения, которым обменивается юзер с ДС.
-            public ProgramInfo Prog = new ProgramInfo();
-            public class Message
-            {
-                public int AnswersNUM = 0;
-                public string V; //V = (v1,v2,…,vn) – вопросы диалога.vi – вопрос, заданный пользователю в текущий момент хода ДВ.
-                public string D; //D = (d1, d2,…, dn) -справочная информация, позволяющая пользователю в соответствующем пункте диалога получить справку о состоянии диалога, о хар-ках текущего пункта, возможные варианты ответов, значения по умолчанию. 
-                public Answers[] R;//R = (sh1, sh2, …, shn) – диапазон допустимых ответов пользователя, который определяется использованием синтаксиса семантического шаблона(код) АЙЧ
+            public int AnswersNUM = 0;
+            public string question;
+            public Answers[] answers;
 
-                public class Answers
+            public class Answers
+            {
+                public String text;
+                public int next;
+                public Answers(string[] str)
                 {
-                    public String Answer;//R = (sh1, sh2, …, shn) – диапазон допустимых ответов пользователя, который определяется использованием синтаксиса семантического шаблона(код) АЙЧ
-                    public int Next; //Next = (n1, n2,…, nm) – список положительных чисел mi, определяющий последующий шаг диалога.
-                    public Command[] Source;
-                    public class Command
-                    {
-                        public bool Exist;
-                        public String Language;
-                        public String Type;
-                        public int[] Length = new int[2];
-                        public String[] Text = new String[2];
-                    }
+                    this.text = str[0];
+                    this.next = Convert.ToInt32(str[1]);
+                }
+            }
+
+            public string[] GetAllAnswers()
+            {
+                string[] str = new string[answers.Length];
+                for (int i = 0; i < answers.Length; i++)
+                    str[i] = answers[i].text;
+
+                return str;
+            }
+            public Message(string[] str)
+            {
+                this.question = str[0];
+                this.answers = new Answers[str.Length - 1];
+                for (int i = 0; i < str.Length-1; i++)
+                {
+                    this.answers[i] = new Answers(str[i + 1].Split('#'));
                 }
 
             }
-        }
-
-        
-
-        public Model()
-        {
 
         }
-        public void IN(int i, int k, int z, int j, StreamReader input)
+
+
+        public Message GetFirst()
         {
-            S[i].M[k].R[z].Source[j].Length = new int[4];  //Console1,Console2, File1,File2
-            S[i].M[k].R[z].Source[j].Text = new string[4];
-            for (int t = 0; t < 4; t++)
-            {
-                S[i].M[k].R[z].Source[j].Length[t] = Convert.ToInt32(input.ReadLine());
-                for (int s = 0; s < S[i].M[k].R[z].Source[j].Length[t]; s++)
-                    S[i].M[k].R[z].Source[j].Text[t] += input.ReadLine() + '\n';
-            }
+            Memory.LoadFile();
+            return GetNext(0);
+
         }
-        public bool OK(int CurPart, int CurQuestion, int CurAnser, string answer)
+
+        public Message GetNext(int skip)
         {
-            if (CurAnser != 12)
-            {
-                for (int i = 1; i < S[CurPart].M[CurQuestion].R[CurAnser].Answer.Length; i++)
-                    if (S[CurPart].M[CurQuestion].R[CurAnser].Answer == answer)
-                        return true;
-                return false;
-            }
+            Message m = Memory.GetMessage(skip);
+            if (m != null)
+                return m;
             else
-            {
-                DirectoryInfo d = new DirectoryInfo(answer);
-                if (d.Exists)
-                    return true;
-                else
-                    return false;
-            }
+                //а что если первого нет?
         }
-        
+
+        public bool EOF()
+        {
+            return Memory.EOF();
+        }
+
     }
 }

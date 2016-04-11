@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            /*
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SCompiler = new System.Windows.Forms.TextBox();
@@ -149,11 +150,13 @@
             this.Text = "Settings";
             this.ResumeLayout(false);
             this.PerformLayout();
+            */
 
         }
 
         #endregion
 
+        /*
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox SCompiler;
@@ -163,5 +166,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox GameTheory;
         private System.Windows.Forms.Button BrowseCpp;
+        */
     }
 }
