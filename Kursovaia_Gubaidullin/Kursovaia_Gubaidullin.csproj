@@ -52,7 +52,7 @@
     <Compile Include="Creator.Designer.cs">
       <DependentUpon>Creator.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemoryProvider.cs" />
+    <Compile Include="Memory.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="View.cs">
