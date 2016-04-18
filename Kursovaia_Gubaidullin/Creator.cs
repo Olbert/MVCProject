@@ -14,12 +14,8 @@ namespace Kursovaia_Gubaidullin
 
     public partial class Creator : Form
     {
-        public int i = 0, k = 0;
-        public bool NEW = true;
-        public bool CanSimpleViewed = true;
-        int PartsNUM = 0;
-        int QuestionNUM = 0;
-        int CurrentLine = 2;
+         bool NEW = true;
+         bool CanSimpleViewed = true;
         
 
         public Creator()
@@ -51,52 +47,13 @@ namespace Kursovaia_Gubaidullin
             SourceBox.Visible = true;
         }
 
-        private void NextPart_Click(object sender, EventArgs e)
-        {
-
-            PartsNUM++;
-            SourceBox.Lines[0] = Convert.ToString(PartsNUM);
-            SourceBox.Lines[CurrentLine - 1] = Convert.ToString(QuestionNUM);
-            QuestionNUM = 0;
-
-            SourceBox.Text += QuestionBox.Text + '\n';      // Вопрос
-            CurrentLine++;
-            SourceBox.Text += Convert.ToString(SourceGrid.RowCount) + '\n';   //Количество Всеможножных ответов
-            CurrentLine++;
-            for (int z = 0; z < SourceGrid.RowCount; z++)
-            {
-                SourceBox.Text += Convert.ToString(SourceGrid.Rows[z].Cells[0].Value) + '\n'; //Ответ
-                CurrentLine++;
-                SourceBox.Text += Convert.ToString(SourceGrid.Rows[z].Cells[0].Value) + '\n'; //Переход
-                CurrentLine++;
-                SourceBox.Text += "false" + '\n'; // Exist-ы кодов
-                CurrentLine++;
-                SourceBox.Text += "false" + '\n';
-                CurrentLine++;
-            }
-            QuestionBox.Clear();
-            SourceGrid.Rows.Clear();
-        }
-
-
         private void NextQuestion_Click(object sender, EventArgs e)//сделано
         {
-
-            QuestionNUM++;
-            SourceBox.Text += QuestionBox.Text + '\n';      // Вопрос
-            CurrentLine++;
-            SourceBox.Text += Convert.ToString(SourceGrid.RowCount) + '\n';   //Количество Всеможножных ответов
-            CurrentLine++;
+            SourceBox.Text += QuestionBox.Text + ';';      // Вопрос
             for (int z = 0; z < SourceGrid.RowCount; z++)
             {
-                SourceBox.Text += Convert.ToString(SourceGrid.Rows[z].Cells[0].Value) + '\n'; //Ответ
-                CurrentLine++;
-                SourceBox.Text += Convert.ToString(SourceGrid.Rows[z].Cells[0].Value) + '\n'; //Переход
-                CurrentLine++;
-                SourceBox.Text += "false" + '\n'; // Exist-ы кодов
-                CurrentLine++;
-                SourceBox.Text += "false" + '\n';
-                CurrentLine++;
+                SourceBox.Text += Convert.ToString(SourceGrid.Rows[z].Cells[0].Value) + '#'; //Ответ
+                SourceBox.Text += Convert.ToString(SourceGrid.Rows[z].Cells[1].Value) + ';'; //Переход
             }
             QuestionBox.Clear();
             SourceGrid.Rows.Clear();
@@ -124,11 +81,6 @@ namespace Kursovaia_Gubaidullin
                     System.IO.StreamReader file = new System.IO.StreamReader(path, Encoding.Default);
                     SourceBox.Text = file.ReadToEnd();
                     file.Close();
-                    file = new System.IO.StreamReader(path, Encoding.Default);
-                    string s = null;
-                    for (int i = 0; i < 7; i++)
-                        s = file.ReadLine();
-                    CanSimpleViewed = Convert.ToBoolean(s);
                     file.Close();
                     NEW = false;
                 }

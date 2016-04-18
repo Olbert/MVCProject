@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.QuestionBox = new System.Windows.Forms.TextBox();
-            this.NextPart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SourceGrid = new System.Windows.Forms.DataGridView();
             this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,17 +55,6 @@
             this.QuestionBox.Name = "QuestionBox";
             this.QuestionBox.Size = new System.Drawing.Size(417, 29);
             this.QuestionBox.TabIndex = 0;
-            // 
-            // NextPart
-            // 
-            this.NextPart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.NextPart.Location = new System.Drawing.Point(435, 136);
-            this.NextPart.Name = "NextPart";
-            this.NextPart.Size = new System.Drawing.Size(123, 48);
-            this.NextPart.TabIndex = 1;
-            this.NextPart.Text = "Следующая часть диалога";
-            this.NextPart.UseVisualStyleBackColor = true;
-            this.NextPart.Click += new System.EventHandler(this.NextPart_Click);
             // 
             // label1
             // 
@@ -191,7 +179,7 @@
             // 
             // SourceBox
             // 
-            this.SourceBox.Location = new System.Drawing.Point(12, 62);
+            this.SourceBox.Location = new System.Drawing.Point(12, 61);
             this.SourceBox.Name = "SourceBox";
             this.SourceBox.Size = new System.Drawing.Size(555, 245);
             this.SourceBox.TabIndex = 7;
@@ -208,7 +196,6 @@
             this.Controls.Add(this.OK);
             this.Controls.Add(this.SourceGrid);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.NextPart);
             this.Controls.Add(this.QuestionBox);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -225,7 +212,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox QuestionBox;
-        private System.Windows.Forms.Button NextPart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView SourceGrid;
         private System.Windows.Forms.Button OK;

@@ -66,7 +66,7 @@ namespace Kursovaia_Gubaidullin
             Message m = Memory.GetMessage(skip);
             if (m != null)
                 return m;
-            else
+            else return m;
                 //а что если первого нет?
         }
 

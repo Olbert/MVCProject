@@ -12,7 +12,7 @@ using System.Threading;
 namespace Kursovaia_Gubaidullin
 {
 
-    // А МОЖЕТ ОТДЕЛЬНЫМ ПРОЕКТОМ?
+    // А МОЖЕТ ОТДЕЛЬНЫМ ПРОЕКТОМ? но что с event-ами
 
 
     public partial class View : Form
